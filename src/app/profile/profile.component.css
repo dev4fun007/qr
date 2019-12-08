@@ -1,0 +1,27 @@
+
+.center {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+ }
+ 
+ 
+ .profile-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+ 
+ 
+ .profile-actions {
+    padding-top: 20px;
+ }
+ 
+ 
+ .avatar {
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+ }
+ 

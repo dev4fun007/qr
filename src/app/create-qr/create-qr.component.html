@@ -1,0 +1,47 @@
+<app-header [showBackButton]="showBackButton" [currentTitle]="title" [showHistoryNav]="showHistoryNav"></app-header>
+
+<mat-card class="qrCard" [class.mat-elevation-z12]=true>
+    <div class="qrContent">
+        
+        <!--Close button section-->
+        <div class="closeBtn">
+            <button mat-icon-button color="accent" routerLink="/" matTooltip="Close">
+                <mat-icon>
+                    <i class="material-icons md-48">close</i>
+                </mat-icon>
+            </button>
+        </div>
+
+        <!--QR code image section-->
+        <div class="qrImgDiv">
+            <img *ngIf="!showProgressSpinner" style="padding: 5px 5px;" src={{qrCodeImage}} width="200px" height="200px">
+            <mat-spinner *ngIf="showProgressSpinner"></mat-spinner>
+            <div class="actionButtons" *ngIf="!showProgressSpinner">
+                <button mat-icon-button color="accent" matTooltip="Share this QR" style="margin: 0 5px;">
+                    <mat-icon>
+                        <i class="material-icons md-48">share</i>
+                    </mat-icon>
+                </button>
+                <button mat-icon-button color="accent" (click)="saveQR()" matTooltip="Save this QR" style="margin: 0 5px;">
+                    <mat-icon>
+                        <i class="material-icons md-48">save</i>
+                    </mat-icon>
+                </button>
+            </div>
+        </div>
+        
+        <!--Textarea to write any text or link-->
+        <div class="qrTextAreaDiv">
+            <mat-form-field style="width: 80%;">
+                <textarea matInput [(ngModel)]="qrText" cdkTextareaAutosize cdkAutosizeMinRows="4" cdkAutosizeMaxRows="4" 
+                    placeholder="Enter a website link or any text..."></textarea>
+            </mat-form-field>
+        </div>
+
+        <!--Create Button-->
+        <div class="createBtnDiv">
+            <button class="createBtn" mat-raised-button color="accent" matTooltip="Create new QR code" matTooltipPosition="above"
+                (click)="createQrCode()">Create</button>
+        </div>
+    </div>
+</mat-card>

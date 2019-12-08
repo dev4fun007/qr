@@ -1,0 +1,24 @@
+<app-header [showBackButton]="showBackButton" [currentTitle]="title" [showHistoryNav]="showHistoryNav"></app-header>
+
+<div class="main-content">
+    <mat-grid-list cols="4" rowHeight="500px" *ngIf="historyList.length > 0">
+        <mat-grid-tile *ngFor="let qr of historyList">
+            <mat-card>
+                <img mat-card-image style="margin-top: 5px;" src="{{qr.imageBase64}}">
+                <mat-card-content>
+                    <div class="truncate">
+                        {{qr.text}}
+                    </div>
+                </mat-card-content>
+                <mat-card-actions>
+                        <button mat-button (click)="share(qr.text)">SHARE</button>
+                        <button mat-button color="accent" (click)="delete(qr.text)">DELETE</button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <div class="center-img" *ngIf="historyList.length == 0">
+        <img src="../../assets/no-see.png" width="256" height="256">
+        <span style="margin-top: 20px;">Nothing to see here</span>
+    </div>
+</div>
